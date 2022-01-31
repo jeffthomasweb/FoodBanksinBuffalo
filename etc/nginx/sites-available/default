@@ -3,11 +3,11 @@ upstream spring {
 	}
 
 
-	server {
-		listen 80; # default_server;
-		server_name 34.212.90.59;
+server {
+	listen 80; # default_server;
+	server_name 34.212.90.59;
 	
-		location / {
-			proxy_pass http://spring;
+	location / {
+		proxy_pass http://spring;
 		}
 	}
