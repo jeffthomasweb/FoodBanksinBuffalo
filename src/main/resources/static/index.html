@@ -43,7 +43,8 @@ font-weight: 500;
        <script> 
 //var storedPoints = [];
 async function getData() {
-        let url = "http://localhost:8080/buffalo/all";
+	// Enter public IP address below
+        let url = "http://ENTERIPADDRESSHERE/buffalo/all";
         try {
                 let response = await fetch(url);
                 return await response.json();
