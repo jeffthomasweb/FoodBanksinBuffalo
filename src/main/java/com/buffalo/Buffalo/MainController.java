@@ -93,17 +93,13 @@ public class MainController {
                      Element element = (Element) node;
 
                      String title = element.getElementsByTagName("title").item(0).getTextContent();
-                     //resultsnews.add(title);
 	             String description = element.getElementsByTagName("description").item(0).getTextContent();
 		     resultsnews.add(title + ". " + description);
-
-			//System.out.println(title + ". " + description + '\n' + '\n');
 
 			}
 			
 			}
-		//return resultsnews;
-		//System.out.println(results);
+	
 	    } catch (ParserConfigurationException | SAXException | IOException | URISyntaxException e) {
                 e.printStackTrace();
             } catch (Exception e) {
