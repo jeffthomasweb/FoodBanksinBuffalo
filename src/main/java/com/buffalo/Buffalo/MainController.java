@@ -31,6 +31,7 @@ public class MainController {
       return buffaloRepository.findAll();
     }
 
+    //Web scrape the NPR news website.
     @GetMapping("/webscrapenews")
     public List<String> feed() throws IOException {
         List<String> results = new ArrayList<String>();
