@@ -75,11 +75,6 @@ async function renderData() {
             //return `[${a.lat},${a.longit}]`;
             return [a.name,a.lat,a.longit,a.address,a.phone,a.website];
                    }); 
-        //foodbanks.forEach(points => {
-        //    let storePoints = {"lat" : points.lat , "longit" : points.longit};
-        //    storedPoints += storePoints;
-        //           });
-        console.log(storedPoints);
         let container = document.querySelector("#top");
         container.innerHTML = html;
         var map = L.map('map').setView([42.880230, -78.878738], 13);
@@ -89,48 +84,6 @@ async function renderData() {
                    }
            } 
 renderData();
-/* async function () {
-    let arrayList = [];
-    let responseList = await getUsers();
-    responseList.forEach(responses => {
-        let responseLists = */  
-//console.log(storedPoints);
-//var map = L.map('map').setView([42.880230, -78.878738], 13);
-//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-
-//var marker = L.marker([42.880230, -78.878738]).addTo(map);
-//console.log(responseList);
-//let marker2 = L.marker([[responseList[0]["lat"]],[responseList[0]["longit"]]]).addTo(map);
     </script>
-
-    <!--
-    async function food() {
-	let fetchAPI = await fetch('http://localhost:8080/buffalo/all');
-	let response = await fetchAPI.json();
-    let responseList0 = [response[0]['name'],'\n' + response[0]['address'],'\n' + response[0]['phone'],'\n' + response[0]['website']];
-    let responseList1 = [response[1]['name'],'\n' + response[1]['address'],'\n' +response[1]['phone'],'\n' + response[1]['website']];
-    let responseList2 = [response[2]['name'],'\n' + response[2]['address'],'\n' + response[2]['phone'],'\n' +response[2]['website']];
-    let responseList3 = [response[3]['name'],'\n' + response[3]['address'],'\n' + response[3]['phone'],'\n' + response[3]['website']];
-    let responseList4 = [response[4]['name'],'\n' + response[4]['address'],'\n' + response[4]['phone'],'\n' + response[4]['website']];
-    let responseList5 = [response[5]['name'],'\n' + response[5]['address'],'\n' + response[5]['phone'],'\n' + response[5]['website']];
-    let responseList6 = [response[6]['name'],'\n' + response[6]['address'],'\n' + response[6]['phone'],'\n' + response[6]['website']];
-    let responseListCombined = [responseList0,'\n', responseList1,'\n',responseList2,'\n',responseList3,'\n',responseList4,'\n',responseList5,'\n',responseList6];
-
-	let responseListCombinedWithSpace = '';
-	for (let item of responseListCombined) {
-		responseListCombinedWithSpace += item + '\n';
-	}
-	for (let x of responseListCombinedWithSpace) {
-		let divElement = document.createElement('div');
-		let text = document.createTextNode(x);
-        let appendText = divElement.appendChild(text);
-		document.body.appendChild(appendText);
-       
-	}
-	let headerElement = "<h1>Buffalo Food Pantries</h1>";
-        document.getElementById("top").innerHTML = headerElement;
-	}
-    food(); 
-    -->
 
 </body></html>
