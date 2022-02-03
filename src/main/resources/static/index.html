@@ -70,7 +70,7 @@ async function renderData() {
         
         let html = "";
         foodbanks.forEach(location => {
-		let htmlSegment = `<p>${location.name}</p>
+		let htmlSegment = `<p><b>${location.name}</b></p>
                                    <p>${location.address}</p>
                                    <p>${location.phone}</p>
 				   <p><a href=${location.website}>${location.website}</a></p><br>`;
