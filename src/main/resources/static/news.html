@@ -40,23 +40,23 @@ font-weight: 500;
     </section>
     <nav class="breadcrumb container is-fluid" aria-label="breadcrumbs">
   <ul>
-    <li class="is-active"><a href="http://34.212.90.59/" aria-current="page">Home</a></li>
-    <li><a href="http://34.212.90.59/news.html">Buffalo News</a></li>
-    <li><a href="http://34.212.90.59/all/">Food Bank API</a></li>
-    <li><a href="http://34.212.90.59/buffalonews">News API</a></li>
+    <li class="is-active"><a href="https://d1s6gdf0jyk1uk.cloudfront.net/" aria-current="page">Home</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/news.html">Buffalo News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/all/">Food Bank API</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews">News API</a></li>
   </ul>
 </nav>
 <div class="container is-fluid">
-<h1 class="title">Buffalo News From WGRZ</h1>
-<p class="content is-medium"> <b>This page lists the most recent RSS Feed stories from a local TV station in Buffalo, NY called WGRZ. </b> </p>
+<h1 class="title"> Buffalo Food Banks</h1>
+<p>A list and map of some of the food banks located in Buffalo, NY. The goal of this portfolio project is to create a site with Nginx as a reverse proxy, Java Spring as the web framework, Postgres as the database, plot location points on a map using the JavaScript library Leaflet, and have wide test coverage. I don't have a domain for the website so unfortunately the website address is an IP address. The website may show as "not secure" in some browsers because I don't have a TLS certificate for https (the site ues http rather than https.)</p>
 </div>
-
+<br>
         <div class="container is-fluid" id="top"> </div>
         <div class="container is-fluid" id="map" style = "width: 900px; height: 580px"></div>
        <script> 
 //var storedPoints = [];
 async function getData() {
-        let url = 'http://34.212.90.59/all/';
+        let url = 'https://d1s6gdf0jyk1uk.cloudfront.net/all/';
 	//let url = 'http://34.212.90.59:8080/all/';
         try {
                 let response = await fetch(url);
@@ -70,7 +70,7 @@ async function renderData() {
         
         let html = "";
         foodbanks.forEach(location => {
-		let htmlSegment = `<p>${location.name}</p>
+		let htmlSegment = `<p><b>${location.name}</b></p>
                                    <p>${location.address}</p>
                                    <p>${location.phone}</p>
 				   <p><a href=${location.website}>${location.website}</a></p><br>`;
@@ -92,8 +92,11 @@ async function renderData() {
            } 
 renderData();
     </script>
+    <br>
 </body></html>
 ubuntu@ip-172-26-9-136:~/buffalo/FoodBanksinBuffalo/src/main/resources/static$ 
+ubuntu@ip-172-26-9-136:~/buffalo/FoodBanksinBuffalo/src/main/resources/static$ ls
+index.html  news.html
 ubuntu@ip-172-26-9-136:~/buffalo/FoodBanksinBuffalo/src/main/resources/static$ cat news.html
 <!DOCTYPE html>
 <html lang="en">
@@ -127,16 +130,22 @@ font-weight: 500;
     </section>
     <nav class="breadcrumb container is-fluid" aria-label="breadcrumbs">
   <ul>
-    <li><a href="http://34.212.90.59/">Home</a></li>
-    <li><a href="http://34.212.90.59/news.html">Buffalo News</a></li>
-    <li><a href="http://34.212.90.59/all/">Food Bank API</a></li>
-    <li><a href="http://34.212.90.59/buffalonews">News API</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/">Home</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/news.html">Buffalo News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/all/">Food Bank API</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews">News API</a></li>
   </ul>
 </nav>
+<div class="container is-fluid">
+	<h1 class="title"> Buffalo News From WGRZ</h1>
+	<p class="content is-medium"> <b>This page lists the most recent RSS Feed stories from a local TV station in Buffalo, NY called WGRZ.</b> </p>
+</div>
+<br>
+
         <div class="container is-fluid" id="top"> </div>
        <script> 
 async function getData() {
-        let url = 'http://34.212.90.59/buffalonews/';
+        let url = 'https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews/';
 	//let url = 'http://34.212.90.59:8080/all/';
         try {
                 let response = await fetch(url);
