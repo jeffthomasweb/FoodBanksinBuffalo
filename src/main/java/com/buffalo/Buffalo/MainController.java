@@ -40,7 +40,8 @@ import org.xml.sax.InputSource;
 public class MainController {
     @Autowired 
     private BuffaloRepository buffaloRepository;
-  
+
+    @CrossOrigin(origins = {"https://jeffthomasweb.github.io/","https://d1s6gdf0jyk1uk.cloudfront.net/"})
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Buffalo> getAllBuffalo() {
       return buffaloRepository.findAll();
@@ -64,48 +65,18 @@ public class MainController {
 	return resultsFinal;
 } */
 
+    @CrossOrigin(origins = {"https://jeffthomasweb.github.io/","https://d1s6gdf0jyk1uk.cloudfront.net/"})
     @GetMapping("/buffalonews")
-    public List<String> buffalonews() throws IOException {
-        String x = "https://www.wgrz.com/feeds/syndication/rss/news/local";
-
-	HttpClient myhc = HttpClient.newHttpClient();
-	List<String> resultsnews = new ArrayList<String>();
-	try {
-	    HttpRequest myreq = HttpRequest.newBuilder(new URI(x)).build();
-	    HttpResponse<String> myresp = myhc.send(myreq, HttpResponse.BodyHandlers.ofString());
-	    String resp = myresp.body();        
-	    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-         
-                
-	    DocumentBuilder db = dbf.newDocumentBuilder();
-	    Document docnews = db.parse(new InputSource(new StringReader(resp)));
-            docnews.getDocumentElement().normalize();
-
-            NodeList list = docnews.getElementsByTagName("item");
-            
-            for (int temp = 0; temp < list.getLength(); temp++) {
-
-                 Node node = list.item(temp);
-
-              	 if (node.getNodeType() == Node.ELEMENT_NODE) {
-
-                     Element element = (Element) node;
-
-                     String title = element.getElementsByTagName("title").item(0).getTextContent();
-	             String description = element.getElementsByTagName("description").item(0).getTextContent();
-		     resultsnews.add(title + ". " + description);
-
-			}
-			
-			}
-	
-	    } catch (ParserConfigurationException | SAXException | IOException | URISyntaxException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-		e.printStackTrace();
-	    }
-	    
-	    return resultsnews; 
-	}
+    public List<String> buffalonewsrss() {
+        Rss newsStoriesClass = new Rss();
+        String site = "https://www.wgrz.com/feeds/syndication/rss/news/local";
+        List<String> newsStoriesListResult = new ArrayList<String>();
+        try {
+	    newsStoriesListResult = newsStoriesClass.buffalonews(site);
+        } catch (IOException e) {
+	    e.printStackTrace();
+        }
+        //System.out.println(testspring);
+            return newsStoriesListResult;
+    }
       }
