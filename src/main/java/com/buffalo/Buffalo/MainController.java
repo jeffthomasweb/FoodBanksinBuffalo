@@ -20,11 +20,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -35,6 +30,7 @@ import java.net.*;
 import java.net.http.*;
 import java.io.*;
 import org.xml.sax.InputSource;
+
 
 @RestController
 public class MainController {
@@ -47,23 +43,18 @@ public class MainController {
       return buffaloRepository.findAll();
     }
     
-
-   /*  @GetMapping("/webscrapenews")
-    public List<String> feed() throws IOException {
-        List<String> results = new ArrayList<String>();
-        Document doc = Jsoup.connect("https://text.npr.org/1001").get();
-        Elements links = doc.getElementsByTag("a");
-	    for (Element link : links) {
-  	    String linkText = link.text();
-  	    results.add(linkText);
-	    }
-
-        List<String> resultsFinal = new ArrayList<String>();
-
-	resultsFinal = results.subList(2,21);
-
-	return resultsFinal;
-} */
+    @CrossOrigin(origins = {"https://jeffthomasweb.github.io/","https://d1s6gdf0jyk1uk.cloudfront.net/"})
+    @GetMapping("/webscrapenews")
+    public List<String> npr() {
+        List<String> finalResultsListNpr = new ArrayList<String>();
+	WebScrape nprNewsList = new WebScrape();
+	try {
+	    finalResultsListNpr = nprNewsList.nprwebscrape();
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
+	return finalResultsListNpr;
+    }
 
     @CrossOrigin(origins = {"https://jeffthomasweb.github.io/","https://d1s6gdf0jyk1uk.cloudfront.net/"})
     @GetMapping("/buffalonews")
@@ -76,7 +67,6 @@ public class MainController {
         } catch (IOException e) {
 	    e.printStackTrace();
         }
-        //System.out.println(testspring);
             return newsStoriesListResult;
     }
       }
