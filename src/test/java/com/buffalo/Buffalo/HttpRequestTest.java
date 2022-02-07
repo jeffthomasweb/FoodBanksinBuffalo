@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -26,6 +25,21 @@ public class HttpRequestTest {
 	}
 
 	@Test
+	public void testApiWebScrapeStatusCode() throws Exception {
+                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/webscrapenews", String.class)).isNotEmpty();
+	}
+
+	@Test
+	public void testApiURLFoodBanksStatusCode() throws Exception {
+                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/all", String.class)).isNotEmpty();
+        }
+	
+	@Test
+        public void testApiURLBuffaloNewsStatusCode() throws Exception {
+                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/buffalonews", String.class)).isNotEmpty();
+        }
+
+	@Test
         public void testBaseUrlContainsHtml() throws Exception {
                 assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
                                 String.class)).contains("DOCTYPE");
@@ -35,6 +49,11 @@ public class HttpRequestTest {
         public void testNewsUrlContainsHtml() throws Exception {
                 assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/news.html",
                                 String.class)).contains("DOCTYPE");
+        }
+
+	@Test
+        public void webScrapeUrlContainsHtml() throws Exception {
+                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/nationalnews.html", String.class)).contains("DOCTYPE");
         }
 
 }
