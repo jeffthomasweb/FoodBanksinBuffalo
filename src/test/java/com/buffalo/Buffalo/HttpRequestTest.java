@@ -1,7 +1,7 @@
 package com.buffalo.Buffalo;
 
 import org.junit.jupiter.api.Test;
-
+//import org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class HttpRequestTest {
 
+	
 	@LocalServerPort
 	private int port;
 
@@ -22,37 +23,31 @@ public class HttpRequestTest {
 	public void testApiContainsNameOfFoodPantry() throws Exception {
 		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/all",
 				String.class)).contains("Belle Center Food Pantry");
-	}
+	};
 
 	@Test
-	public void testApiWebScrapeStatusCode() throws Exception {
-                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/webscrapenews", String.class)).isNotEmpty();
-	}
-
-	@Test
-	public void testApiURLFoodBanksStatusCode() throws Exception {
-                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/all", String.class)).isNotEmpty();
-        }
-	
-	@Test
-        public void testApiURLBuffaloNewsStatusCode() throws Exception {
-                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/buffalonews", String.class)).isNotEmpty();
+        public void testBaseUrlContainsHtmlFragmentDoctype() throws Exception {
+                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class)).contains("DOCTYPE");
         }
 
 	@Test
-        public void testBaseUrlContainsHtml() throws Exception {
-                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-                                String.class)).contains("DOCTYPE");
+        public void testNewsUrlContainsHtmlFragmentDoctype() throws Exception {
+                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/news.html", String.class)).contains("DOCTYPE");
         }
 
 	@Test
-        public void testNewsUrlContainsHtml() throws Exception {
+        public void testNewsUrlContainsHtmlFragmentBoldTag() throws Exception {
+                assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/news.html", String.class)).contains("<b>");
+        }
+
+	@Test
+        public void testNewsUrlContainsHtmlFragmentCssContentMedium() throws Exception {
                 assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/news.html",
-                                String.class)).contains("DOCTYPE");
+                                String.class)).contains("content is-medium");
         }
 
 	@Test
-        public void webScrapeUrlContainsHtml() throws Exception {
+        public void webScrapeUrlContainsHtmlFragmentDoctype() throws Exception {
                 assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/nationalnews.html", String.class)).contains("DOCTYPE");
         }
 
