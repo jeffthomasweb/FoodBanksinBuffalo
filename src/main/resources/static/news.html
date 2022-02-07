@@ -30,19 +30,20 @@ font-weight: 500;
     </section>
     <nav class="breadcrumb container is-fluid" aria-label="breadcrumbs">
   <ul>
-    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/">Home</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/">Buffalo Food Banks List</a></li>
     <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/news.html">Buffalo News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/nationalnews.html">National News</a></li>
     <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/all/">Food Bank API</a></li>
     <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews">News API</a></li>
   </ul>
 </nav>
 <div class="container is-fluid">
-	<h1 class="title"> Buffalo News From WGRZ</h1>
-	<p class="content is-medium"> <b>This page lists the most recent RSS Feed stories from a local TV station in Buffalo, NY called WGRZ.</b> </p>
+	<h1 class="title has-text-black"> Buffalo News From WGRZ</h1>
+	<p class="content is-medium has-text-black"> <b>This page lists the most recent RSS Feed stories from a local TV station in Buffalo, NY called WGRZ.</b> </p>
 </div>
 <br>
 
-        <div class="container is-fluid" id="top"> </div>
+        <div class="container is-fluid has-text-black" id="top"> </div>
        <script> 
 async function getData() {
         let url = 'https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews/';
@@ -67,4 +68,152 @@ async function renderData() {
                    } 
 renderData();
     </script>
+    <br>
+</body></html>
+ubuntu@ip-172-26-9-136:~/buffalo/FoodBanksinBuffalo/src/main/resources/static$ cat news.html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Buffalo News From WGRZ</title>
+<style>
+h1 {
+font-family: Verdana, Helvetica, Arial, sans-serif;
+font-weight: 500;
+font-size: 1.6em;
+}
+
+body {
+/*white-space: pre-wrap;*/
+font-family: Verdana, Helvetica, Arial, sans-serif;
+padding-left: 5%;
+padding-right: 5%;
+font-weight: 500;
+/* font-size: 1.6em; */
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    </head>
+    <body>
+    <section class="hero is-info">
+        <div class="hero-body">
+<h1 class="title has-text-white">Buffalo News From WGRZ</h1>
+        </div>
+    </section>
+    <nav class="breadcrumb container is-fluid" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/">Buffalo Food Banks List</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/news.html">Buffalo News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/nationalnews.html">National News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/all/">Food Bank API</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews">News API</a></li>
+  </ul>
+</nav>
+<div class="container is-fluid">
+	<h1 class="title has-text-black"> Buffalo News From WGRZ</h1>
+	<p class="content is-medium has-text-black"> <b>This page lists the most recent RSS Feed stories from a local TV station in Buffalo, NY called WGRZ.</b> </p>
+</div>
+<br>
+
+        <div class="container is-fluid has-text-black" id="top"> </div>
+       <script> 
+async function getData() {
+        let url = 'https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews/';
+	//let url = 'http://34.212.90.59:8080/all/';
+        try {
+                let response = await fetch(url);
+                return await response.json();
+            } catch (error) {
+                    console.log(error);
+                }
+    }
+async function renderData() {
+        let stories = await getData();
+        
+        let html = "";
+        stories.forEach(story => {
+		let htmlSegment = `<p class="content is-medium">${story}</p>`
+                html += htmlSegment;
+            });
+        let container = document.querySelector("#top");
+        container.innerHTML = html;
+                   } 
+renderData();
+    </script>
+    <br>
+</body></html>
+ubuntu@ip-172-26-9-136:~/buffalo/FoodBanksinBuffalo/src/main/resources/static$ vim news.html
+ubuntu@ip-172-26-9-136:~/buffalo/FoodBanksinBuffalo/src/main/resources/static$ cat news.html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Buffalo News From WGRZ</title>
+<style>
+h1 {
+font-family: Verdana, Helvetica, Arial, sans-serif;
+font-weight: 500;
+font-size: 1.6em;
+}
+
+body {
+/*white-space: pre-wrap;*/
+font-family: Verdana, Helvetica, Arial, sans-serif;
+padding-left: 5%;
+padding-right: 5%;
+font-weight: 500;
+/* font-size: 1.6em; */
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    </head>
+    <body>
+    <section class="hero is-info">
+        <div class="hero-body">
+<h1 class="title has-text-white">Buffalo News From WGRZ</h1>
+        </div>
+    </section>
+    <nav class="breadcrumb container is-fluid" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/">Buffalo Food Banks List</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/news.html">Buffalo News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/nationalnews.html">National News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/all/">Food Bank API</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews">News API</a></li>
+  </ul>
+</nav>
+<div class="container is-fluid">
+	<h1 class="title has-text-black"> Buffalo News From WGRZ</h1>
+	<p class="content is-medium has-text-black"> <b>This page lists the most recent RSS Feed stories from a local TV station in Buffalo, NY called WGRZ.</b> </p>
+</div>
+<br>
+
+        <div class="container is-fluid has-text-black" id="top"> </div>
+       <script> 
+async function getData() {
+        let url = 'https://d1s6gdf0jyk1uk.cloudfront.net/buffalonews/';
+	//let url = 'http://34.212.90.59:8080/all/';
+        try {
+                let response = await fetch(url);
+                return await response.json();
+            } catch (error) {
+                    console.log(error);
+                }
+    }
+async function renderData() {
+        let stories = await getData();
+        
+        let html = "";
+        stories.forEach(story => {
+		let htmlSegment = `<p class="content is-medium">${story}</p>`
+                html += htmlSegment;
+            });
+        let container = document.querySelector("#top");
+        container.innerHTML = html;
+                   } 
+renderData();
+    </script>
+    <br>
 </body></html>
