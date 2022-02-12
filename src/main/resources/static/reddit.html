@@ -17,9 +17,6 @@ padding-left: 5%;
 padding-right: 5%;
 font-weight: 500;
 }
-/* body .extra { */
-/* white-space: pre-wrap;*/
-/* }*/
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     </head><body><section class="hero is-info"><div class="hero-body">
@@ -56,8 +53,8 @@ async function renderData() {
                                <p>${story.summary}</p>
 			       <p><a href=${story.link}>${story.link}</a></p></div><br>`;
                 html += htmlSegment;
-            });        
-renderData()
+	}) } ;        
+renderData();
     </script>
     <br>
 </body></html>
