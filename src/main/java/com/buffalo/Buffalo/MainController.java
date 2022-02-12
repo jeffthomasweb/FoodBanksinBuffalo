@@ -67,6 +67,20 @@ public class MainController {
         } catch (IOException e) {
 	    e.printStackTrace();
         }
-            return newsStoriesListResult;
+        return newsStoriesListResult;
     }
-      }
+    
+    @CrossOrigin(origins = {"https://jeffthomasweb.github.io/","https://d1s6gdf0jyk1uk.cloudfront.net/", "https://4dxqjt8w9c.execute-api.us-east-2.amazonaws.com/default/reddit"})
+    @GetMapping("/awslambdareddit")
+    public String awsLambdaRedditFunction() {
+        HttpClientReddit newResponse = new HttpClientReddit();
+        String newResponseResult = new String();
+        try {
+            newResponseResult = newResponse.javaRedditPosts();
+            } catch (IOException e) {
+                e.printStackTrace();
+                }
+            return newResponseResult;
+
+    }
+ }
