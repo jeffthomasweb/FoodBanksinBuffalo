@@ -17,6 +17,10 @@ padding-left: 5%;
 padding-right: 5%;
 font-weight: 500;
 }
+
+body .extra {
+white-space: pre-wrap;
+}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     </head><body><section class="hero is-info"><div class="hero-body">
@@ -27,13 +31,14 @@ font-weight: 500;
     <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/">Buffalo Food Banks List</a></li>
     <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/news.html">Buffalo News</a></li>
     <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/nationalnews.html">National News</a></li>
+    <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/reddit.html">AWS Lambda Function</a></li>
     <li><a href="https://d1s6gdf0jyk1uk.cloudfront.net/api.html">Website API Links</a></li>
   </ul>
 </nav>
 <div class="container is-fluid">
 	<h1 class="title has-text-black">Java Reddit Posts</h1>
-	<p class="content is-medium has-text-black"> <b>This page uses an AWS Lambda function written in Python to parse the Reddit RSS feed for the Java subreddit.</b> </p></div>
-	<div class="container is-fluid has-text-black" id="top"></div>
+	<p class="content is-medium has-text-black"> <b>This page uses an AWS Lambda function to parse the Reddit RSS feed for the Java subreddit. May take a few seconds to load since a new container must be started if there have been no recent requests.</b> </p><br></div>
+<div class="extra"><div class="container is-fluid has-text-black content is-medium" id="top"></div></div>
 <script> 
 async function getData() {
         let url = 'https://d1s6gdf0jyk1uk.cloudfront.net/awslambdareddit';
@@ -47,14 +52,13 @@ async function getData() {
     }
 async function renderData() {
         let stories = await getData();
-        stories.forEach(story => {
-	    let htmlSegment = `<div class="has-text-black">
-		               <p><b>${story.title}</b></p>
-                               <p>${story.summary}</p>
-			       <p><a href=${story.link}>${story.link}</a></p></div><br>`;
-                html += htmlSegment;
-	}) } ;        
+        let html = "";
+	let htmlSegment = `<p>${stories}</p>
+			   <br>`;
+        html += htmlSegment;
+        let container = document.querySelector("#top");
+        container.innerHTML = html;
+}
 renderData();
     </script>
-    <br>
 </body></html>
