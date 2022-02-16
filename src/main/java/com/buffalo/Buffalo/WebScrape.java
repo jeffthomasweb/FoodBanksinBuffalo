@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WebScrape {
-	List<String> nprwebscrape() throws IOException {
+	List<String> nprWebScrape() throws IOException {
             List<String> resultsNpr = new ArrayList<String>();
             List<String> resultsFinalNpr = new ArrayList<String>();
 	    try {
@@ -26,10 +26,11 @@ public class WebScrape {
                     String linkTextNpr = singleLinkNpr.text();
                     resultsNpr.add(linkTextNpr);
                 }
+                //List<String> resultsFinalNpr = new ArrayList<String>();
                 resultsFinalNpr = resultsNpr.subList(2,21);
             } catch (IOException e) {
                 e.printStackTrace();
-             }
+            }
 
             return resultsFinalNpr;
     }
