@@ -49,7 +49,7 @@ public class MainController {
         List<String> finalResultsListNpr = new ArrayList<String>();
 	WebScrape nprNewsList = new WebScrape();
 	try {
-	    finalResultsListNpr = nprNewsList.nprwebscrape();
+	    finalResultsListNpr = nprNewsList.nprWebScrape();
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
@@ -80,6 +80,7 @@ public class MainController {
             } catch (IOException e) {
                 e.printStackTrace();
                 }
+            //System.out.println(newResponseResult);
             return newResponseResult;
 
     }
