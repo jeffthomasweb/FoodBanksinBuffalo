@@ -14,15 +14,15 @@ import java.io.IOException;
 @SpringBootTest
 public class WebScrapeTest {
     @Test
-    public void webscrapetest() {
-	WebScrape testwebscrape = new WebScrape();
-    	List<String> testwebscrapeList = new ArrayList<String>();
+    public void webScrapeTest() {
+	WebScrape testWebScrape = new WebScrape();
+    	List<String> testWebScrapeList = new ArrayList<String>();
     	try {
-	    testwebscrapeList = testwebscrape.nprwebscrape();
+	    testWebScrapeList = testWebScrape.nprWebScrape();
     	} catch (IOException e) {
 	    e.printStackTrace();
             }
-	assertTrue(testwebscrapeList.size() > 10);
-	assertNotNull(testwebscrapeList);
+	assertTrue(testWebScrapeList.size() > 10);
+	assertNotNull(testWebScrapeList);
     }
 }
