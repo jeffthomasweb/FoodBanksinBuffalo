@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.boot.web.server.LocalServerPort;
 //import static org.assertj.core.api.Assertions.assertThat.*;
 import static org.assertj.core.api.Assertions.*;
 import org.springframework.http.HttpEntity;
@@ -16,7 +17,8 @@ import org.springframework.http.ResponseEntity;
 public class HttpRequestTest {
 
     	
-    @LocalServerPort
+    //@LocalServerPort
+    @Value(value="${local.server.port}")
     private int port;
 
     @Autowired
